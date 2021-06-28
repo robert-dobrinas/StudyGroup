@@ -6,7 +6,7 @@ import java.util.regex.Pattern;
 public class TestClass {
     public static void main(String[] args) {
         Scanner exerciseNumber = new Scanner(System.in);
-        System.out.println("Input exercise number from 1 to 10");
+        System.out.println("Input exercise number from 1 to 10 (11 is another solution to the last problem)");
         int exNumber = exerciseNumber.nextInt();
         switch (exNumber) {
             case 1:
@@ -39,10 +39,13 @@ public class TestClass {
             case 10:
                 averageValue();
                 break;
+            case 11:
+                averageValue2();
+                break;
 
 
             default:
-                System.out.println("Exercise not found, please input a number between 1 and 10");
+                System.out.println("Exercise not found, please input a number between 1 and 11");
                 break;
         }
 
@@ -203,30 +206,41 @@ public class TestClass {
     }
 
     public static void averageValue() {
-        int[] intArray = {10, 20, 30, 40, 50, 60};
-        System.out.println("This is your original array: "+Arrays.toString(intArray));
+        int[] intArray = {12, 18, 4, 88, 56, 2, 99, 42};
+        System.out.println("This is your original array: " + Arrays.toString(intArray));
         int max = intArray[0];
         int min = intArray[0];
         int sum = 0;
-        for(int i = 0; i < intArray.length; i++)
-        {
-            sum  += intArray[i];
-            if(intArray[i] > max)
+        for (int i = 0; i < intArray.length; i++) {
+            sum += intArray[i];
+            if (intArray[i] > max)
                 max = intArray[i];
-            else if(intArray[i] < min)
+            else if (intArray[i] < min)
                 min = intArray[i];
         }
         int newArrayLength = intArray.length - 2;
-        System.out.println("New array length is: "+newArrayLength);
-        System.out.println("Min is: "+min);
-        System.out.println("MAX is: "+max);
-        System.out.println("Sum is: "+sum);
+        System.out.println("New array length is: " + newArrayLength);
+        System.out.println("Min is: " + min);
+        System.out.println("MAX is: " + max);
+        System.out.println("Sum is: " + sum);
 
-        int average = ((sum-max-min) / (newArrayLength));
-        System.out.println("This is the average of your array without min and max: "+average);
-
-
+        int average = ((sum - max - min) / (newArrayLength));
+        System.out.println("This is the average of your array without min and max: " + average);
 
 
+    }
+
+    public static void averageValue2() {
+        int[] intArray = {12, 18, 4, 88, 56, 2, 99, 42};
+        System.out.println("Your array is all messed up: " + Arrays.toString(intArray));
+        Arrays.sort(intArray);
+        System.out.println("I have sorted your array and now i will calculate the average without first and last item " + Arrays.toString(intArray));
+        int sum = 0;
+        for (int i = 1; i < intArray.length - 1; i++) {
+            sum += intArray[i];
+
+        }
+        int average = sum / (intArray.length - 2);
+        System.out.println("The average of your array without first and last item is: " + average);
     }
 }
