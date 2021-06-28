@@ -1,7 +1,6 @@
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Scanner;
+import jdk.swing.interop.SwingInterOpUtils;
+
+import java.util.*;
 import java.util.regex.Pattern;
 
 public class TestClass {
@@ -27,6 +26,18 @@ public class TestClass {
                 break;
             case 6:
                 countVowelsDigits();
+                break;
+            case 7:
+                addArrayElement();
+                break;
+            case 8:
+                removeOccurence();
+                break;
+            case 9:
+                bubbleSort();
+                break;
+            case 10:
+                averageValue();
                 break;
 
 
@@ -137,6 +148,85 @@ public class TestClass {
 
         }
         System.out.println("There are " + count + " vowels and/or numbers in the given string");
+
+    }
+
+    public static void addArrayElement() {
+        ArrayList<Integer> newArrayList = new ArrayList<>();
+        newArrayList.add(1);
+        newArrayList.add(2);
+        newArrayList.add(4);
+        newArrayList.add(5);
+        newArrayList.add(6);
+        System.out.println("Your current Array is: " + newArrayList);
+        newArrayList.add(2, 3);
+        System.out.println("Your new Array is: " + newArrayList);
+
+
+    }
+
+    public static void removeOccurence() {
+        ArrayList<Integer> intList = new ArrayList<>();
+        intList.add(1);
+        intList.add(2);
+        intList.add(3);
+        intList.add(1);
+        intList.add(2);
+        intList.add(3);
+        int key = 2;
+        System.out.println("Your array list is: " + intList);
+        intList.removeAll(Collections.singletonList(key));
+        System.out.println("Your new array list is : " + intList);
+
+
+    }
+
+    public static void bubbleSort() {
+        int[] intArray = {22, 3, 33, 4, 44, 5, 55, 6};
+        System.out.println("Your array is: " + Arrays.toString(intArray));
+        boolean sorted = false;
+        int temp;
+        while (!sorted) {
+            sorted = true;
+            for (int i = 0; i < intArray.length - 1; i++) {
+                if (intArray[i] > intArray[i + 1]) {
+                    temp = intArray[i];
+                    intArray[i] = intArray[i + 1];
+                    intArray[i + 1] = temp;
+                    sorted = false;
+                }
+            }
+        }
+
+        System.out.println("Your bubble sorted array is: " + Arrays.toString(intArray));
+
+    }
+
+    public static void averageValue() {
+        int[] intArray = {10, 20, 30, 40, 50, 60};
+        System.out.println("This is your original array: "+Arrays.toString(intArray));
+        int max = intArray[0];
+        int min = intArray[0];
+        int sum = 0;
+        for(int i = 0; i < intArray.length; i++)
+        {
+            sum  += intArray[i];
+            if(intArray[i] > max)
+                max = intArray[i];
+            else if(intArray[i] < min)
+                min = intArray[i];
+        }
+        int newArrayLength = intArray.length - 2;
+        System.out.println("New array length is: "+newArrayLength);
+        System.out.println("Min is: "+min);
+        System.out.println("MAX is: "+max);
+        System.out.println("Sum is: "+sum);
+
+        int average = ((sum-max-min) / (newArrayLength));
+        System.out.println("This is the average of your array without min and max: "+average);
+
+
+
 
     }
 }
